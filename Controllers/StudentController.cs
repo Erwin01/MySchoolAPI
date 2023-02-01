@@ -122,5 +122,29 @@ namespace MySchoolAPI.Controllers
                 return StatusCode(500, ex);
             }
         }
+        
+        
+        
+        /// <summary>
+        /// Search Student - 01-02-2023
+        /// </summary>
+        /// <param name="searchStudent"></param>
+        /// <returns> FirstName or PhoneNumber </returns>
+        [HttpGet("[action]")]
+        public async Task<IActionResult> Search(string searchStudent)
+        {
+
+            try
+            {
+                //hub.Clients.All.SendAsync("SearchStudent",searchStudent);
+
+                return Ok(await student.Search(searchStudent));
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex);
+            }
+        }
     }
 }
