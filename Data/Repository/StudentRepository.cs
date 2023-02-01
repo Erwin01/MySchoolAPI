@@ -168,5 +168,25 @@ namespace MySchoolAPI.Data.Repository
                 }
             }
         }
+        
+        
+        
+        /// <summary>
+        /// Search Student - 01-02-2023
+        /// </summary>
+        /// <param name="searchStudent"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Student>> Search(string searchStudent)
+        {
+
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@SearchValue", searchStudent);
+
+            using (IDbConnection dbConnection = GetConnection())
+            {
+                return await dbConnection.QueryAsync<Student>("SearchStudent", param: parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
