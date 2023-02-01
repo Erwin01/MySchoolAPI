@@ -17,6 +17,8 @@ namespace MySchoolAPI.Data.Interfaces
         bool Delete(int id);
 
         public bool Update(int id, StudentDTO studentDTO);
+        
+        Task<IEnumerable<Student>> Search(string searchStudent);
 
     }
 }
